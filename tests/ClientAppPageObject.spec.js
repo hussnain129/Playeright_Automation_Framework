@@ -1,5 +1,6 @@
 const { test, expect } = require("@playwright/test");
-const { LoginPage } = require("../page-objects/LoginPage"); // Adjust the path as necessary
+const { LoginPage } = require("../page-objects/LoginPage");
+const { DashBoardPage } = require("../page-objects/DashBoardPage");
 
 test.describe("Login Tests", () => {
 
@@ -9,20 +10,11 @@ test.describe("Login Tests", () => {
         const userName= ("anshika@gmail.com");
         const products = page.locator(".card-body");
         const loginPage = new LoginPage(page);
-        loginPage.goTo();
-        loginPage.login(userName, password);
-        await page.waitForLoadState("networkidle");
-        const allTextContents = await page.locator(".card-body b").allTextContents();
-        console.log(allTextContents);
-        const count = await products.count();
-        for (let i = 0; i < count; i++) {
-            const productName = await products.nth(i).locator("b").textContent();
-            if (productName === productNames) {
-                await products.nth(i).locator("text= Add To Cart").click();
-                break;
-            }
-        }
-        await page.locator("[routerlink*='cart']").click();
+        await loginPage.goTo();
+        await loginPage.login(userName, password);
+        const dashboardpage = new DashBoardPage(page);
+        await dashboardpage.searchProduct(productNames);
+        await dashboardpage.navigateToCart();
         await page.locator("div li").first().waitFor();
         const bool = await page.locator("h3:has-text('IPHONE 13 PRO')").isVisible();
         expect(bool).toBeTruthy();
