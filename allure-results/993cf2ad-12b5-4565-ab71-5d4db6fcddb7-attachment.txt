@@ -1,0 +1,12 @@
+Token:  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjQwYTJlYmE4NmY4Zjc0ZGNlMDFhNjgiLCJ1c2VyRW1haWwiOiJtLmh1c3NuYWluMTk5NEBnbWFpbC5jb20iLCJ1c2VyTW9iaWxlIjozMDg3NDA3MzY5LCJ1c2VyUm9sZSI6ImN1c3RvbWVyIiwiaWF0IjoxNzQzOTA4NTIwLCJleHAiOjE3NzU0NjYxMjB9.NHGqMxNS6-hl6EEPjScn19LKJT_poLWVMbE00ilwKlU
+Login Response Body:  {
+  token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjQwYTJlYmE4NmY4Zjc0ZGNlMDFhNjgiLCJ1c2VyRW1haWwiOiJtLmh1c3NuYWluMTk5NEBnbWFpbC5jb20iLCJ1c2VyTW9iaWxlIjozMDg3NDA3MzY5LCJ1c2VyUm9sZSI6ImN1c3RvbWVyIiwiaWF0IjoxNzQzOTA4NTIwLCJleHAiOjE3NzU0NjYxMjB9.NHGqMxNS6-hl6EEPjScn19LKJT_poLWVMbE00ilwKlU',
+  userId: '6640a2eba86f8f74dce01a68',
+  message: 'Login Successfully'
+}
+Order Response Body:  {
+  orders: [ '67f1eea8fc76541aad214378' ],
+  productOrderId: [ '67a8df56c0d3e6622a297ccd' ],
+  message: 'Order Placed Successfully'
+}
+Order ID:  67f1eea8fc76541aad214378

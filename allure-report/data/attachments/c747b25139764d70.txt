@@ -1,0 +1,12 @@
+Token:  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjQwYTJlYmE4NmY4Zjc0ZGNlMDFhNjgiLCJ1c2VyRW1haWwiOiJtLmh1c3NuYWluMTk5NEBnbWFpbC5jb20iLCJ1c2VyTW9iaWxlIjozMDg3NDA3MzY5LCJ1c2VyUm9sZSI6ImN1c3RvbWVyIiwiaWF0IjoxNzQzOTExMzE3LCJleHAiOjE3NzU0Njg5MTd9.wZrkW_t64SWrx-1RxtDjwg78w6Rvx-P__F1gX_Sanyo
+Login Response Body:  {
+  token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjQwYTJlYmE4NmY4Zjc0ZGNlMDFhNjgiLCJ1c2VyRW1haWwiOiJtLmh1c3NuYWluMTk5NEBnbWFpbC5jb20iLCJ1c2VyTW9iaWxlIjozMDg3NDA3MzY5LCJ1c2VyUm9sZSI6ImN1c3RvbWVyIiwiaWF0IjoxNzQzOTExMzE3LCJleHAiOjE3NzU0Njg5MTd9.wZrkW_t64SWrx-1RxtDjwg78w6Rvx-P__F1gX_Sanyo',
+  userId: '6640a2eba86f8f74dce01a68',
+  message: 'Login Successfully'
+}
+Order Response Body:  {
+  orders: [ '67f1f995fc76541aad2148b8' ],
+  productOrderId: [ '67a8df56c0d3e6622a297ccd' ],
+  message: 'Order Placed Successfully'
+}
+Order ID:  67f1f995fc76541aad2148b8

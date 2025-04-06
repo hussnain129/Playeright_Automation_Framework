@@ -1,0 +1,111 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: Login Tests >> Login
+- Location: G:\InterviewPreparation\PlaywrightAutomationPersonal\tests\ClientAppPageObject.spec.js:7:5
+
+# Error details
+
+```
+Error: locator.waitFor: Test timeout of 30000ms exceeded.
+Call log:
+  - waiting for locator('div li').first() to be visible
+
+    at G:\InterviewPreparation\PlaywrightAutomationPersonal\tests\ClientAppPageObject.spec.js:18:46
+```
+
+# Page snapshot
+
+```yaml
+- navigation:
+  - link "Automation Automation Practice":
+    - heading "Automation" [level=3]
+    - paragraph: Automation Practice
+  - list:
+    - listitem:
+      - button " HOME"
+    - listitem
+    - listitem:
+      - button " ORDERS"
+    - listitem:
+      - button " Cart"
+    - listitem:
+      - button "Sign Out"
+- heading "My Cart" [level=1]
+- button "Continue Shopping❯"
+- heading "No Products in Your Cart !" [level=1]
+```
+
+# Test source
+
+```ts
+   1 | const { test, expect } = require("@playwright/test");
+   2 | const { LoginPage } = require("../page-objects/LoginPage");
+   3 | const { DashBoardPage } = require("../page-objects/DashBoardPage");
+   4 |
+   5 | test.describe("Login Tests", () => {
+   6 |
+   7 |     test("Login", async ({ page }) => {
+   8 |         const productNames = ("IPHONE 13 PRO");
+   9 |         const password = ("Iamking@000");
+  10 |         const userName= ("anshika@gmail.com");
+  11 |         const products = page.locator(".card-body");
+  12 |         const loginPage = new LoginPage(page);
+  13 |         await loginPage.goTo();
+  14 |         await loginPage.login(userName, password);
+  15 |         const dashboardpage = new DashBoardPage(page);
+  16 |         await dashboardpage.searchProduct(productNames);
+  17 |         await dashboardpage.navigateToCart();
+> 18 |         await page.locator("div li").first().waitFor();
+     |                                              ^ Error: locator.waitFor: Test timeout of 30000ms exceeded.
+  19 |         const bool = await page.locator("h3:has-text('IPHONE 13 PRO')").isVisible();
+  20 |         expect(bool).toBeTruthy();
+  21 |         await page.locator("text= Checkout ").click();
+  22 |         await page.locator("[placeholder*='Country']").pressSequentially("ind", { delay: 100 });
+  23 |         const dropdown = page.locator(".ta-results");
+  24 |         await dropdown.waitFor();
+  25 |         const optionsCount = await dropdown.locator("button").count();
+  26 |         for (let i = 0; i < optionsCount; i++) {
+  27 |             const country = await dropdown.locator("button").nth(i).textContent();
+  28 |             if (country === " India") {
+  29 |                 await dropdown.locator("button").nth(i).click();
+  30 |                 break;
+  31 |             }
+  32 |         }
+  33 |         await expect(page.locator(".user__name [type = 'text']").first()).toHaveText(userName);
+  34 |         await page.locator(".action__submit ").click();
+  35 |         await expect(page.locator(".hero-primary")).toHaveText(" Thankyou for the order. ");
+  36 |         const orderID = await page.locator(".em-spacer-1 .ng-star-inserted").textContent();
+  37 |         console.log("Order ID: ", orderID);
+  38 |         await page.locator("button[routerlink*='myorders']").click();
+  39 |         await page.locator("tbody").waitFor();
+  40 |         const rows = page.locator("tbody tr");
+  41 |
+  42 |         for (let i = 0; i < await rows.count(); ++i) {
+  43 |             const orderIDText = await rows.nth(i).locator("th").textContent();
+  44 |
+  45 |             if (orderIDText && orderID.includes(orderIDText.trim())) {
+  46 |                 const viewButton = rows.nth(i).locator("button:has-text('View')");
+  47 |                 await viewButton.waitFor({ state: "visible" }); // Ensure button is visible
+  48 |                 await viewButton.click();
+  49 |                 break;
+  50 |             }
+  51 |         }
+  52 |
+  53 |         // Wait for order details to appear
+  54 |         await page.locator(".col-text").waitFor();
+  55 |         const orderIdDetails = await page.locator(".col-text").textContent();
+  56 |
+  57 |         // Verify the order details contain the order ID
+  58 |         expect(orderID.includes(orderIdDetails.trim())).toBeTruthy();
+  59 |
+  60 |         await page.pause();
+  61 |
+  62 |     });
+  63 | });
+```
