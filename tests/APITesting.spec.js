@@ -38,7 +38,6 @@ test.describe("Login Tests", () => {
 
         expect(response.orderID.includes(orderIdDetails.trim())).toBeTruthy();
 
-        await page.pause();
 
     });
 });

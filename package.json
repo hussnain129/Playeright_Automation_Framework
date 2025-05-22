@@ -12,6 +12,6 @@
     "@playwright/test": "^1.51.1",
     "@types/node": "^22.13.10",
     "allure-commandline": "^2.33.0",
-    "allure-playwright": "^3.2.1"
+    "allure-playwright": "^3.2.2"
   }
 }

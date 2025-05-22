@@ -14,5 +14,4 @@ test("Child Windows Handle", async ({ browser }) => {
     const arrayText = text.split("@")[1];
     const domain = arrayText.split(" ")[0];
     await page.locator("#username").fill(domain);
-    await page.pause();  
 });

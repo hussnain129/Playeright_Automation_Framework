@@ -57,7 +57,6 @@ test.describe("Login Tests", () => {
         // Verify the order details contain the order ID
         expect(orderID.includes(orderIdDetails.trim())).toBeTruthy();
 
-        await page.pause();
 
     });
 });

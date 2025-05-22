@@ -1,0 +1,3 @@
+iphone X
+Samsung Note 8
+[ 'iphone X', 'Samsung Note 8', 'Nokia Edge', 'Blackberry' ]
